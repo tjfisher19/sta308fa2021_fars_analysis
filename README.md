@@ -12,5 +12,9 @@ Ultimately we will merge the data from the API with Ohio county-level population
 
 The FARS API is publicly available and instructions for accessing the API can be found here: https://crashviewer.nhtsa.dot.gov/CrashAPI
 
-We will be obtaining crash-level information for all counties in Ohio from 2019.
+We will be obtaining crash-level information for all counties in Ohio from 2019. 
+The API requires we enter the FIPS code for each county, the list of counties and FIPS codes can be found here: https://en.wikipedia.org/wiki/List_of_counties_in_Ohio.
+Note that the county FIPS codes are odd numbered, 1, 3, 5, .... 165, 167, ...., 175.
+
+
 
