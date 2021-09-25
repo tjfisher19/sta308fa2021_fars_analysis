@@ -18,7 +18,7 @@
 ## Task: Your task is to take this output from the API
 ##       and build a data.frame where each row
 ##       corresponds to a County in Ohio and the
-##       recorded number of fatalities in 2019.
+##       recorded number of fatalities in 2018-2019.
 
 library(jsonlite)
 
@@ -47,7 +47,7 @@ butler_co
 ## The variable FATALS in Results includes the number 
 ##   of fatalities for each crash.
 ## Our ultimate goal is to aggregate all those results
-##   for each county in 2019
+##   for each county in 2018-2019
 
 #################################
 ## get_county_json(county=1)
@@ -58,7 +58,7 @@ butler_co
 ## We use this function so we can lapply() over
 ##   all valid county FIPS codes.
 get_county_json <- function(county=1) {
-  site <- paste0("https://crashviewer.nhtsa.dot.gov/CrashAPI/crashes/GetCrashesByLocation?fromCaseYear=2019&toCaseYear=2019&state=39&county=", 
+  site <- paste0("https://crashviewer.nhtsa.dot.gov/CrashAPI/crashes/GetCrashesByLocation?fromCaseYear=2018&toCaseYear=2019&state=39&county=", 
                  county, 
                  "&format=json")
   fromJSON(site)
