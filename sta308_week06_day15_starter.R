@@ -8,8 +8,15 @@
 ##   coming classes with more content, but for
 ##   now it does the following:
 ##
-## 1. demonstrates functionality of the fromJSON()
+## 1. Demonstrates functionality of the fromJSON()
 ##    function and demonstrates the NHTSA FARS API
+##    Including code that accesses data from the 
+##    National Highway Traffic Safety Administration
+##    (NHTSA) Fatality Analysis Reporting System 
+##    (FARS) program API.
+## 
+## The FARS data:  US motor vehicle crashes resulting in a death 
+##
 ## 2. Provides a function that will fetch the crash
 ##    data for a given county in Ohio (specified by
 ##    a FIPS code number: 1, 3, 5,..., 173, 175
@@ -19,7 +26,20 @@
 ##       and build a data.frame where each row
 ##       corresponds to a County in Ohio and the
 ##       recorded number of fatalities in 2018-2019.
-
+## Wednesday task: Merge the data from the API with 
+##       Ohio county-level population data from the 
+##       US Census and perform a short analysis.
+## 
+## Background:  API Details
+## The publicly available FARS API - instructions for accessing 
+## the API: https://crashviewer.nhtsa.dot.gov/CrashAPI
+##
+## Obtain crash-level information for all counties in Ohio from 
+## 2018-2019. The API requires we enter the FIPS code for each county, ## the list of counties and FIPS codes can be found here: 
+## https://en.wikipedia.org/wiki/List_of_counties_in_Ohio. Note that ##      county FIPS codes are odd numbered, 1, 3, ... 167, ..., 175.
+##
+##
+library(tidyverse)
 library(jsonlite)
 
 ################################
