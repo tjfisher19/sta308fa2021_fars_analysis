@@ -91,3 +91,41 @@ all_county_list <- lapply(seq(1,175,2), get_county_json)
 ##   that extracts the county name &
 ##   number of fatalities in that county
 
+str(all_county_list)
+length(all_county_list)
+all_county_list[[1]]
+all_county_list[[1]]$Results
+class(all_county_list[[1]]$Results)
+all_county_list[[1]]$Results[[1]]
+class(all_county_list[[1]]$Results[[1]])
+
+all_county_list[[1]]$Results[[1]] %>%
+  summarize(Total_fatalities = sum(FATALS))
+
+all_county_list[[1]]$Results[[1]]$FATALS
+as.numeric(all_county_list[[1]]$Results[[1]]$FATALS)
+
+all_county_list[[1]]$Results[[1]] %>%
+  summarize(Total_fatalities = sum(as.numeric(FATALS)))
+
+all_county_list[[5]]$Results[[1]] %>%
+  group_by(COUNTYNAME) %>%
+  summarize(Total_fatalities = sum(as.numeric(FATALS)))
+
+####################
+## Let's write a function
+get_county_fatalities <- function(x) {
+  x$Results[[1]] %>%
+    group_by(COUNTYNAME) %>%
+    summarize(Total_fatalities = sum(as.numeric(FATALS)))
+}
+
+get_county_fatalities(all_county_list[[1]])
+get_county_fatalities(all_county_list[[2]])
+
+county_level_data <- lapply(all_county_list,
+                            get_county_fatalities)
+length(county_level_data)
+str(county_level_data)
+county_level_data <- bind_rows(county_level_data)
+View(county_level_data)
