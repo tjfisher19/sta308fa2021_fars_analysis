@@ -78,4 +78,17 @@ ohioCountyFatalPop <- merge(county_level_data2,
 View(ohioCountyFatalPop)
 
 plot(ohioCountyFatalPop[,2:3])
+plot(ohioCountyFatalPop[,3:2])
 
+### Let's calculate the rate of fatalities
+## Using population as a proxy for roadways & traffic, etc...
+
+ohioCountyFatalPop %>%
+  mutate(Fatality_rate = Total_fatalities/Population*10000) %>%
+  arrange(Fatality_rate) %>%
+  slice(1:15)
+
+ohioCountyFatalPop %>%
+  mutate(Fatality_rate = Total_fatalities/Population*10000) %>%
+  arrange(desc(Fatality_rate)) %>%
+  slice(1:15)
